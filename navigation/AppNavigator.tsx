@@ -29,10 +29,10 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SignIn">
-        <Stack.Screen name="SignIn" component={SignInScreen} />
-        <Stack.Screen name="Dashboard" component={DashboardScreen} />
-        <Stack.Screen name="AddTransaction" component={AddTransactionScreen} />
-        <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} />
+        <Stack.Screen name="SignIn" component={SignInScreen}  options={{ headerShown: false }}/>
+        <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="AddTransaction" component={AddTransactionScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="TransactionDetails" component={TransactionDetailsScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
