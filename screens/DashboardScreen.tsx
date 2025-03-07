@@ -21,9 +21,9 @@ const DashboardScreen: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Dashboard</Text>
-        <Button title="Logout" onPress={handleLogout} />
+        <Button title="Logout" onPress={handleLogout} color="#FFAB5B" />
       </View>
-      <Button title="Add Transaction" onPress={handleAddTransaction} />
+      <Button title="Add Transaction" onPress={handleAddTransaction} color="#00879E" />
       <FlatList
         data={transactions}
         renderItem={({ item }) => (
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: '#FFF2DB',
   },
   header: {
     flexDirection: 'row',
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    color: '#003092',
   },
 });
 

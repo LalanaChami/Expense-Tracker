@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addTransaction } from '../store/actions';
-import { validateTransaction } from '../utils/validation';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList, Transaction } from '../navigation/AppNavigator';
+import { validateTransaction } from '../utils/validation';
 
-const AddTransactionForm: React.FC = () => {
+const AddTransactionScreen: React.FC = () => {
   const [date, setDate] = useState('');
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
@@ -32,7 +32,7 @@ const AddTransactionForm: React.FC = () => {
     if (validationError) {
       alert(validationError);
     } else {
-     //  dispatch(addTransaction(transaction));
+      // dispatch(addTransaction(transaction));
       navigation.goBack();
     }
   };
@@ -45,38 +45,44 @@ const AddTransactionForm: React.FC = () => {
         placeholder="Date"
         value={date}
         onChangeText={setDate}
+        placeholderTextColor="#003092"
       />
       <TextInput
         style={styles.input}
         placeholder="Amount"
         value={amount}
         onChangeText={setAmount}
+        placeholderTextColor="#003092"
       />
       <TextInput
         style={styles.input}
         placeholder="Description"
         value={description}
         onChangeText={setDescription}
+        placeholderTextColor="#003092"
       />
       <TextInput
         style={styles.input}
         placeholder="Location"
         value={location}
         onChangeText={setLocation}
+        placeholderTextColor="#003092"
       />
       <TextInput
         style={styles.input}
         placeholder="Transaction Type"
         value={type}
         onChangeText={setType}
+        placeholderTextColor="#003092"
       />
       <TextInput
         style={styles.input}
         placeholder="Category"
         value={category}
         onChangeText={setCategory}
+        placeholderTextColor="#003092"
       />
-      <Button title="Add Transaction" onPress={handleAddTransaction} />
+      <Button title="Add Transaction" onPress={handleAddTransaction} color="#00879E" />
     </View>
   );
 };
@@ -86,18 +92,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 16,
+    backgroundColor: '#FFF2DB',
   },
   title: {
     fontSize: 24,
     marginBottom: 16,
+    color: '#003092',
+    textAlign: 'center',
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#003092',
     borderWidth: 1,
     marginBottom: 12,
     paddingHorizontal: 8,
+    borderRadius: 5,
+    backgroundColor: '#FFF2DB',
+    color: '#003092',
   },
 });
 
-export default AddTransactionForm;
+export default AddTransactionScreen;

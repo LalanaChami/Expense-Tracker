@@ -16,8 +16,8 @@ const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => {
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.item}>
-      <Text>{transaction.description}</Text>
-      <Text>{transaction.amount}</Text>
+      <Text style={styles.description}>{transaction.description}</Text>
+      <Text style={styles.amount}>{transaction.amount}</Text>
     </TouchableOpacity>
   );
 };
@@ -26,7 +26,16 @@ const styles = StyleSheet.create({
   item: {
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderBottomColor: '#003092',
+    backgroundColor: '#FFF2DB',
+  },
+  description: {
+    fontSize: 18,
+    color: '#003092',
+  },
+  amount: {
+    fontSize: 16,
+    color: '#FFAB5B',
   },
 });
 

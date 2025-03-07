@@ -24,6 +24,7 @@ const SignInScreen: React.FC = () => {
         placeholder="Username"
         value={username}
         onChangeText={setUsername}
+        placeholderTextColor="#003092"
       />
       <TextInput
         style={styles.input}
@@ -31,8 +32,9 @@ const SignInScreen: React.FC = () => {
         value={password}
         onChangeText={setPassword}
         secureTextEntry
+        placeholderTextColor="#003092"
       />
-      <Button title="Sign In" onPress={handleSignIn} />
+      <Button title="Sign In" onPress={handleSignIn} color="#FFAB5B" />
     </View>
   );
 };
@@ -42,17 +44,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 16,
+    backgroundColor: '#FFF2DB',
   },
   title: {
     fontSize: 24,
     marginBottom: 16,
+    color: '#003092',
+    textAlign: 'center',
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#003092',
     borderWidth: 1,
     marginBottom: 12,
     paddingHorizontal: 8,
+    borderRadius: 5,
+    backgroundColor: '#FFF2DB',
+    color: '#003092',
   },
 });
 
