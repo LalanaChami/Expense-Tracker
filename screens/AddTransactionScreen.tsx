@@ -32,14 +32,14 @@ const AddTransactionScreen: React.FC = () => {
     if (validationError) {
       alert(validationError);
     } else {
-      // dispatch(addTransaction(transaction));
+      dispatch(addTransaction(transaction));
       navigation.goBack();
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Add Transaction</Text>
+      {/* <Text style={styles.title}>Add Transaction</Text> */}
       <TextInput
         style={styles.input}
         placeholder="Date"
@@ -90,7 +90,8 @@ const AddTransactionScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: '',
+    // height: '100%',
     padding: 16,
     backgroundColor: '#FFF2DB',
   },

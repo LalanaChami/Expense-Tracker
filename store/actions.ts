@@ -9,7 +9,7 @@ export interface AddTransactionAction {
 
 export type TransactionActionTypes = AddTransactionAction;
 
-export const addTransaction = (transaction: Transaction): AddTransactionAction => {
+export const addTransaction = (transaction: Transaction) => {
   return {
     type: ADD_TRANSACTION,
     payload: transaction,
