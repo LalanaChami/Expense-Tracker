@@ -19,7 +19,7 @@ Expense Tracker is a React Native application that allows users to track their e
 ## Screenshots
 
 ### App in Action
-<img src="./screenshots/rec.gif" alt="App in Action" width="600"/>
+<img src="./screenshots/rec.gif" alt="App in Action" width="400"/>
 
 ### Screens
 
