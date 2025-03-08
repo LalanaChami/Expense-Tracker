@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addTransaction } from '../store/actions';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
@@ -53,8 +53,9 @@ const AddTransactionScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Add Transaction</Text>
-      <Button title="Pick Date" onPress={() => setShowDatePicker(true)} />
+      <TouchableOpacity style={styles.dateButton} onPress={() => setShowDatePicker(true)}>
+        <Text style={styles.dateButtonText}>Pick Date</Text>
+      </TouchableOpacity>
       {showDatePicker && (
         <DateTimePicker
           value={date}
@@ -86,29 +87,35 @@ const AddTransactionScreen: React.FC = () => {
         placeholderTextColor="#003092"
       />
       <Text style={styles.label}>Transaction Type</Text>
-      <Picker
-        selectedValue={type}
-        onValueChange={(itemValue) => setType(itemValue)}
-        style={styles.picker}
-      >
-        <Picker.Item label="Debit" value="Debit" />
-        <Picker.Item label="Credit" value="Credit" />
-        <Picker.Item label="Cash" value="Cash" />
-      </Picker>
+      <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={type}
+          onValueChange={(itemValue) => setType(itemValue)}
+          style={styles.picker}
+        >
+          <Picker.Item label="Debit" value="Debit" />
+          <Picker.Item label="Credit" value="Credit" />
+          <Picker.Item label="Cash" value="Cash" />
+        </Picker>
+      </View>
       <Text style={styles.label}>Category</Text>
-      <Picker
-        selectedValue={category}
-        onValueChange={(itemValue) => setCategory(itemValue)}
-        style={styles.picker}
-      >
-        <Picker.Item label="Food" value="Food" />
-        <Picker.Item label="Transport" value="Transport" />
-        <Picker.Item label="Entertainment" value="Entertainment" />
-        <Picker.Item label="Shopping" value="Shopping" />
-        <Picker.Item label="Health" value="Health" />
-        <Picker.Item label="Other" value="Other" />
-      </Picker>
-      <Button title="Add Transaction" onPress={handleAddTransaction} color="#00879E" />
+      <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={category}
+          onValueChange={(itemValue) => setCategory(itemValue)}
+          style={styles.picker}
+        >
+          <Picker.Item label="Food" value="Food" />
+          <Picker.Item label="Transport" value="Transport" />
+          <Picker.Item label="Entertainment" value="Entertainment" />
+          <Picker.Item label="Shopping" value="Shopping" />
+          <Picker.Item label="Health" value="Health" />
+          <Picker.Item label="Other" value="Other" />
+        </Picker>
+      </View>
+      <TouchableOpacity style={styles.addButton} onPress={handleAddTransaction}>
+        <Text style={styles.addButtonText}>Add Transaction</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -140,9 +147,37 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: '#003092',
   },
+  pickerContainer: {
+    borderColor: '#003092',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 12,
+    backgroundColor: '#FFF2DB',
+  },
   picker: {
     height: 50,
+    color: '#003092',
+  },
+  dateButton: {
+    backgroundColor: '#003092',
+    padding: 10,
+    borderRadius: 5,
     marginBottom: 12,
+  },
+  dateButtonText: {
+    color: '#FFF2DB',
+    textAlign: 'center',
+  },
+  addButton: {
+    backgroundColor: '#00879E',
+    padding: 15,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  addButtonText: {
+    color: '#FFF2DB',
+    textAlign: 'center',
+    fontSize: 16,
   },
 });
 
