@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import TransactionItem from '../components/TransactionItem';
@@ -21,9 +21,11 @@ const DashboardScreen: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Dashboard</Text>
-        <Button title="Logout" onPress={handleLogout} color="#FFAB5B" />
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+          <Text style={styles.logoutButtonText}>Logout</Text>
+        </TouchableOpacity>
       </View>
-      <Button title="Add Transaction" onPress={handleAddTransaction} color="#00879E" />
+      
       <FlatList
         data={transactions}
         renderItem={({ item }) => (
@@ -31,6 +33,9 @@ const DashboardScreen: React.FC = () => {
         )}
         keyExtractor={(item) => item.id.toString()}
       />
+      <TouchableOpacity style={styles.addButton} onPress={handleAddTransaction}>
+        <Text style={styles.addButtonText}>Add Transaction</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -38,7 +43,7 @@ const DashboardScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    // padding: 16,
     backgroundColor: '#FFF2DB',
   },
   header: {
@@ -46,10 +51,33 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 16,
+    backgroundColor: '#003092',
+    padding: 16,
+    // borderRadius: 5,
   },
   title: {
     fontSize: 24,
-    color: '#003092',
+    color: '#FFF2DB',
+  },
+  logoutButton: {
+    backgroundColor: '#FFAB5B',
+    padding: 10,
+    borderRadius: 5,
+  },
+  logoutButtonText: {
+    color: '#FFF2DB',
+    fontSize: 16,
+  },
+  addButton: {
+    backgroundColor: '#00879E',
+    margin: 10,
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  addButtonText: {
+    color: '#FFF2DB',
+    fontSize: 16,
   },
 });
 
