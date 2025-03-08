@@ -53,8 +53,9 @@ const AddTransactionScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.label}>Date</Text>
       <TouchableOpacity style={styles.dateButton} onPress={() => setShowDatePicker(true)}>
-        <Text style={styles.dateButtonText}>Pick Date</Text>
+        <Text style={styles.dateButtonText}>{date.toDateString()}</Text>
       </TouchableOpacity>
       {showDatePicker && (
         <DateTimePicker
@@ -64,6 +65,7 @@ const AddTransactionScreen: React.FC = () => {
           onChange={handleDateChange}
         />
       )}
+      <Text style={styles.label}>Amount</Text>
       <TextInput
         style={styles.input}
         placeholder="Amount"
@@ -72,6 +74,7 @@ const AddTransactionScreen: React.FC = () => {
         keyboardType="numeric"
         placeholderTextColor="#003092"
       />
+      <Text style={styles.label}>Description</Text>
       <TextInput
         style={styles.input}
         placeholder="Description"
@@ -79,6 +82,7 @@ const AddTransactionScreen: React.FC = () => {
         onChangeText={setDescription}
         placeholderTextColor="#003092"
       />
+      <Text style={styles.label}>Location</Text>
       <TextInput
         style={styles.input}
         placeholder="Location"
@@ -133,7 +137,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   input: {
-    height: 40,
+    height: 50,
     borderColor: '#003092',
     borderWidth: 1,
     marginBottom: 12,
@@ -148,25 +152,29 @@ const styles = StyleSheet.create({
     color: '#003092',
   },
   pickerContainer: {
+    height: 50,
     borderColor: '#003092',
     borderWidth: 1,
     borderRadius: 5,
     marginBottom: 12,
     backgroundColor: '#FFF2DB',
+    justifyContent: 'center',
   },
   picker: {
     height: 50,
     color: '#003092',
   },
   dateButton: {
+    height: 50,
     backgroundColor: '#003092',
-    padding: 10,
+    justifyContent: 'center',
     borderRadius: 5,
     marginBottom: 12,
   },
   dateButtonText: {
     color: '#FFF2DB',
     textAlign: 'center',
+    fontSize: 16,
   },
   addButton: {
     backgroundColor: '#00879E',
