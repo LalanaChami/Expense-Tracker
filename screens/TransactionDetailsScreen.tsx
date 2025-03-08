@@ -13,7 +13,7 @@ const TransactionDetailsScreen: React.FC = () => {
     <View style={styles.container}>
       {/* <Text style={styles.title}>Transaction Details</Text> */}
       <Text style={styles.detail}>Date: {transaction.date}</Text>
-      <Text style={styles.detail}>Amount: {transaction.amount}</Text>
+      <Text style={styles.detail}>Amount: ${transaction.amount}</Text>
       <Text style={styles.detail}>Description: {transaction.description}</Text>
       <Text style={styles.detail}>Location: {transaction.location}</Text>
       <Text style={styles.detail}>Type: {transaction.type}</Text>

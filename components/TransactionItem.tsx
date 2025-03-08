@@ -17,7 +17,7 @@ const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => {
   return (
     <TouchableOpacity onPress={handlePress} style={styles.item}>
       <Text style={styles.description}>{transaction.description}</Text>
-      <Text style={styles.amount}>{transaction.amount}</Text>
+      <Text style={styles.amount}>${transaction.amount}</Text>
     </TouchableOpacity>
   );
 };
