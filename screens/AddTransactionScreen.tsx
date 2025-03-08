@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity, Platform } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addTransaction } from '../store/actions';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
@@ -53,6 +53,7 @@ const AddTransactionScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      {/* <Text style={styles.title}>Add Transaction</Text> */}
       <Text style={styles.label}>Date</Text>
       <TouchableOpacity style={styles.dateButton} onPress={() => setShowDatePicker(true)}>
         <Text style={styles.dateButtonText}>{date.toDateString()}</Text>
@@ -92,22 +93,26 @@ const AddTransactionScreen: React.FC = () => {
       />
       <Text style={styles.label}>Transaction Type</Text>
       <View style={styles.pickerContainer}>
-        <Picker
+      <View style={styles.pickerWrapper}>
+      <Picker
           selectedValue={type}
           onValueChange={(itemValue) => setType(itemValue)}
-          style={styles.picker}
+          style={Platform.OS === 'ios' ? styles.pickerIOS : styles.picker}
         >
           <Picker.Item label="Debit" value="Debit" />
           <Picker.Item label="Credit" value="Credit" />
           <Picker.Item label="Cash" value="Cash" />
         </Picker>
       </View>
+        
+      </View>
       <Text style={styles.label}>Category</Text>
       <View style={styles.pickerContainer}>
+        <View style={styles.pickerWrapper}>
         <Picker
           selectedValue={category}
           onValueChange={(itemValue) => setCategory(itemValue)}
-          style={styles.picker}
+          style={Platform.OS === 'ios' ? styles.pickerIOS : styles.picker}
         >
           <Picker.Item label="Food" value="Food" />
           <Picker.Item label="Transport" value="Transport" />
@@ -116,6 +121,8 @@ const AddTransactionScreen: React.FC = () => {
           <Picker.Item label="Health" value="Health" />
           <Picker.Item label="Other" value="Other" />
         </Picker>
+        </View>
+        
       </View>
       <TouchableOpacity style={styles.addButton} onPress={handleAddTransaction}>
         <Text style={styles.addButtonText}>Add Transaction</Text>
@@ -162,7 +169,27 @@ const styles = StyleSheet.create({
   },
   picker: {
     height: 50,
+    justifyContent: "center",
     color: '#003092',
+  },
+  pickerWrapper: {
+    // height: 30,
+    // minHeight: 30,
+    // maxHeight: 30,
+    flex: 1,
+    backgroundColor: '#FFF2DB',
+  },
+  pickerIOS: {
+    height: 20,
+    minHeight: 20,
+    width: "100%",
+    // color: '#003092',
+    justifyContent: "center",
+    // borderWidth: 2,
+    // textAlign: 'left',
+    backgroundColor: "#fff",
+    // backgroundColor: '#FFF2DB',
+    flex: 1, // Adjust the margin to align the picker properly on iOS
   },
   dateButton: {
     height: 50,
